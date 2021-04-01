@@ -1,0 +1,15 @@
+Import/Create Data -> Data Preprocessing( Option ) -> Apply Algorithm -> Data Post Processing( Option ) -> Output.
+
+1) Import/Create Data -> Import csv File
+
+2) Data Preprocessing ->
+	a)  Identify the y and x where x is input columns/datas and y is output column/data.
+	b) Fix the null values if it exist in any column.
+	c) All 'Input' columns must contain only Integer/Float Data.Input Columns should not contain String Data.
+	d) Remove Unwanted Columns
+
+3) Apply Alogrithm -> Choose your algorithm.
+
+4) Output -> 
+	a) Predicted Value.( Compare Your current value and predicted value. )
+	b) Check your output accuracy.
