@@ -1,4 +1,6 @@
 def find_less_corr( x_data, y_data ):
+    import pandas as pd
+    
     if( isinstance( y_data, pd.DataFrame ) == False ):
         y_data = pd.DataFrame( y_data )
        
