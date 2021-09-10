@@ -1,4 +1,5 @@
 def find_outlier( x ):
+    import pandas as pd
 
     #dict which will hold outlier details
     outliers_dict = {}
