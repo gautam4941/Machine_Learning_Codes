@@ -1256,10 +1256,10 @@ for i in data:
 
 ######## File Handling ######
 
+# file_path = r"C:\Users\gauta\PycharmProjects\MachineLearning\ML Projects\4_Thyroid Test\hypothyroid.csv"
+# output_folder_path = r"C:\Users\gauta\Desktop\New folder"
 
-file_path = r"C:\Users\gauta\PycharmProjects\MachineLearning\ML Projects\4_Thyroid Test\hypothyroid.csv"
-output_folder_path = r"C:\Users\gauta\Desktop\New folder"
-
+"""
 f = open( file_path, "r" )
 data = f.read()
 f.close()
@@ -1329,3 +1329,566 @@ if( extra_rows_check > 0 ):
       csv_f.close()
       txt_f.close()
 # Code to Check extra lines End
+
+"""
+
+########## Json File Handling ############
+# file_path = r"C:\Users\gauta\PycharmProjects\Python_Concept_Gautam\Json\DUMMY_JSON_DATA.json"
+
+"""
+import json
+
+f = open( file_path, "r" )
+# data = f.read()
+data = json.load(f)
+
+f.close()
+
+# print( data )
+# print( type(data) )
+
+for i in data.values():
+      # print( i )
+
+      if( "TV" in i['hobbies'] ):
+            print( i["Name"] )
+            i['hobbies'].append( "Music" )
+
+      print( i )
+
+"""
+# f = open( r"C:\Users\gauta\Desktop\New folder\Output_Json_Data.json", "w" )
+"""
+json.dump(data, f, indent = 4 )
+# f.write( str( data ) )
+f.close()
+"""
+
+
+########## Functions ##################
+
+# Function = Function is variable which holds statements and arguments
+
+"""
+a = 2
+print(a)  # 2
+
+a = 3
+print(a)  # 3
+
+def f():
+      print( "Hello" )
+      a = 2
+      print(a )
+      print( a + 4 )
+
+
+f()
+print()
+print()
+
+def f():
+      print( "New Specification " )
+
+
+f()
+"""
+
+"""
+def f(a):
+      
+      print( f"Before, f(), a = {a}" )
+      a = a * 5
+      print( f"After, f(), a = {a}" )
+
+      # return "Hello", 10, 45, a
+      return a
+
+op = f(2) # "Hello", 10, 45
+# op, op1, op2 = f(2) # "Hello", 10, 45
+
+print( f"op = {op} and type( op ) = { type( op ) }" )
+"""
+
+"""
+def add( num1, num2 ):
+      print( f"add() : num1 = { num1 } and num2 = {num2}" )
+
+      return num1+num2
+
+def add( num1, num2, num3 ):
+      print( f"add() : num1 = { num1 } and num2 = {num2} and num3 = { num3 }" )
+
+      return num1+num2+num3
+
+add( 2, 5, 6 )
+
+add(2, 5 )
+"""
+
+"""
+def add( *nums ): # nums = ()
+      print( f"nums = {nums} and type( nums ) = { type( nums ) }" )
+      total = 0
+
+      for i in nums:
+            total = total + i
+
+      return total
+
+op = add(2, 3, 6)
+print( f"op = {op} and type( op ) = { type( op ) }" )
+"""
+
+
+############ Types of Arguments ################
+
+# 1) Requirement Argument
+"""
+def f1(a, b):
+      print( f"f1() : a = {a} and b = {b}" )
+
+f1(2, 3, 45)
+"""
+
+# 2) Default Argument
+"""
+def f1(a, b = 0): # a, b = 2, 3
+      print( f"f1() : a = {a} and b = {b}" )
+
+f1(2, 3, 4)
+"""
+
+"""
+def add( num1, num2, num3 = 0 ):
+      print( f"add() : num1 = { num1 } and num2 = {num2} and num3 = { num3 }" )
+
+      return num1+num2+num3
+
+op = add( 2, 5, 3)
+print( f"op = {op} and type( op ) = { type( op ) }" )
+"""
+
+# 3) Positional Arguments
+"""
+def add( num1, num2, num3 = 0 ):
+      print( f"add(), Before : num1 = { num1 } and num2 = {num2} and num3 = { num3 }" )
+      # O/p :- add(), Before : num1 = 2 and num2 = 5 and num3 = 3
+
+      num1 = num1 * 2
+      num2 = num2 * 3
+      num3 = num3 * 4
+
+      print( f"add(), After : num1 = { num1 } and num2 = {num2} and num3 = { num3 }" )
+      # O/p :- add(), After : num1 = 4 and num2 = 15 and num3 = 12
+
+      return num1+num2+num3
+
+# op = add( 2, 5, 3) # O/p :- op = 31 and type( op ) = <class 'int'>
+
+# op = add( 5, 2, 3)
+op = add( num2 = 5, num1 = 2, num3 = 3)
+print( f"op = {op} and type( op ) = { type( op ) }" )
+"""
+
+
+# 4)  Variable Length Arguments
+# Args -> arguments -> *
+# Kwargs = Kw-args = keyword argument
+"""
+def add( a, b, c = 0, *nums ): # nums = ()
+      print( f"a = {a}, b = {b} and c = {c}" )
+      print( f"nums = {nums} and type( nums ) = { type( nums ) }\n" )
+      total = a+b+c
+
+      for i in nums:
+            total = total + i
+
+      return total
+
+# op = add(2, 3)
+# op = add(2, 3, 5)
+op = add(2, 3, 5, 6, 9, 10, 22)
+print( f"op = {op} and type( op ) = { type( op ) }" )
+"""
+
+"""
+def add( a, b, c = 0, *nums, **d_nums ): # nums = ()
+      print( f"a = {a}, b = {b} and c = {c}" )
+      print( f"nums = {nums} and type( nums ) = { type( nums ) }\n" )
+      print( f"d_nums = {d_nums} and type( d_nums ) = { type( d_nums ) }\n" )
+      total = a+b+c
+
+      for i in nums:
+            total = total + i
+
+      for i in d_nums.values():
+            total = total + i
+
+      return total
+
+# op = add(2, 3)
+# op = add(2, 3, 5)
+# op = add(2, 3, 5, 6, 9, 10)
+op = add(2, 3, 5, 6, 9, e = 10, f = 22)
+print( f"op = {op} and type( op ) = { type( op ) }" )
+"""
+
+"""
+def pascal( n=0 ):
+      currList = []
+      
+      if( n == 0 ):
+            return "Not Possible as n = 0"
+      
+      elif( n == 1 ):
+            currList = [1]
+
+      else:
+            currList = pascal(n-1) # currList = [1]
+            
+            prevList = currList.copy() # prevList = []
+            
+            currList = [1]          # currList = [1]
+
+            for i in range( len(prevList) - 1 ):
+                  currList.append( prevList[i] + prevList[i+1] )
+
+            currList.append( 1 )
+
+      print( currList )
+
+      return currList
+
+pascal( 4 )
+"""
+
+"""
+[ 2, 2, 2, 2, 2, 6, 9, 6, 10, 10, 2, 2, 4, 7 ]
+[ 2, 2, 2, 6, 9, 6, 10, 2, 4 ]
+[ 2, 2, 6, 9, 6, 10, 2, 4 ]
+[ 2, 6, 9, 6, 10, 2, 4 ]
+"""
+
+"""
+# I/p :- abc
+# O/p :- abc, acb, bac, bca, cab, cba
+
+data = [ 2, 2, 2, 2, 2, 6, 9, 6, 10, 10, 2, 2, 4, 7 ]
+
+def removePairs( data ):
+      print( data )
+
+      temp = []
+      i = 0
+      while( i < len( data ) ):
+            
+            if( (i < len(data)-1) and  (data[i] == data[i+1]) ):
+                  i = i + 1
+
+            temp.append( data[i] )
+
+            i = i + 1
+
+      if( temp == data ):
+            return 
+
+      data = temp.copy()
+
+      removePairs( data )
+      
+removePairs( data )
+"""
+
+"""
+# 'b' -> ['b']
+# 'c' -> ['c']
+
+# 'bc' -> [ 'b' * ['c'], 'c' * ['b'] ]
+
+# 'abc' -> [ 'a' * 'bc', 'b' * 'ca' , 'c' * 'ab' ]
+
+def possibilities( chars, op = [] ):
+      if( len( chars ) == 1 ):
+            return chars
+      else:            
+            i = 0
+            while( i < len( chars ) ):
+                  currChar = chars[i]
+
+                  nextIterChar = chars[ : i ] + chars[i+1:]
+                  print( f"currChar = {currChar} and nextIterChar = {nextIterChar}" )
+
+                  output = possibilities( nextIterChar )
+                  print( f"output = {output}" )
+                  
+                  for j in output:
+                        op.append( currChar + j )
+
+                  op.append( currChar + output[0] )
+                  
+                  i = i + 1
+
+data = "abc"
+data = list( data )
+
+outcome = []
+possibilities( data, outcome )
+print( outcome )
+"""
+
+"""
+def checkPalindrome(s):
+    return s == s[::-1]
+
+def getPalindromePartitions(s,i):
+    if i>=len(s):
+        return [""]
+    partitions=[]
+    j=i
+    while(j<len(s)):
+        t=s[i:j+1]
+        print( f"i = {i}, j = {j}, j+1 = {j+1}, s = {s} and t = {t}" )
+        
+        if checkPalindrome(t):
+            
+            newPartitions = getPalindromePartitions(s, j+1)
+
+            print( f"\tnewPartitions = { newPartitions }" )
+            
+            for p in newPartitions:
+                k=[t]
+                k.extend(p)
+                partitions.append(k)
+                print( f"\t\t t = {t} , k = {k}" )
+
+            print( f"partition = {partitions}\n" )
+                
+        j+=1
+    return partitions
+
+s="nitin"
+l=getPalindromePartitions(s,0)
+print(l)
+"""
+
+# 1) stringifyNumbers,
+"""
+I/P    :- {'num': 1, 'test': [], 'data': {'val': 4, 'Info': {'isRight': True, 'random': 66}}}
+
+O/P :- {'num': '1', 'test': [], 'data': {'val': '4', 'Info': {'isRight': True, 'random': '66'}}}
+
+
+def stringifyNumbers(obj):
+      for i, j in obj.items():
+            print( f"i = {i} and j = {j}" )
+            
+            if( isinstance( j, int) or isinstance( j, float) ):
+                  obj[i] = str( j )
+            elif( isinstance( j, dict) ):
+                  obj[i] = stringifyNumbers( j )
+
+      return obj
+
+obj = {
+    "num" : 1,
+    "test" : [],
+    "data" : {
+        "val" : 4,
+        "Info" : {
+            "isRight" : True,
+            "random" : 66
+        }
+    }
+}
+
+print( obj )
+print()
+print()
+print( stringifyNumbers( obj ) )
+"""
+
+# 2) nestedEvenSum
+"""
+I/P :- {
+  "a": 2,
+  "b": {"b": 2, "bb": {"b": 3, "bb": {"b": 2}}},
+  "c": {"c": {"c": 2}, "cc": 'ball', "ccc": 5},
+  "d": 1,
+  "e": {"e": {"e": 2}, "ee": 'car'}
+}
+
+O/P :- 10
+
+
+def nestedEvenSum(obj, sum=0):
+
+  if( isinstance( obj, dict ) == False ):
+    return 0
+
+  for i, j in obj.items():
+
+    if( isinstance( j, int) or isinstance( j, float) ):
+      if( j%2 == 0 ):
+        sum = sum + j
+
+    elif( isinstance( j, dict) ):
+      sum = nestedEvenSum( j, sum )
+
+  return sum
+
+obj = {
+  "a": 2,
+  "b": {"b": 2, "bb": {"b": 3, "bb": {"b": 2}}},
+  "c": {"c": {"c": 2}, "cc": 'ball', "ccc": 5},
+  "d": 1,
+  "e": {"e": {"e": 12}, "ee": 'car'}
+}
+op = nestedEvenSum( obj )
+print( f"op = { op }" )
+"""
+
+# 3) Flatten the list data,
+
+"""
+I/P :- [1, 2, 3, [4, 5], [6] ]
+O/p :- [1, 2, 3, 4, 5, 6]
+
+
+def flatten(arr):
+    if( isinstance( arr, list ) == False ):
+        return arr
+
+    temp = []
+
+    for i in arr:
+        if( isinstance( i, list ) ):
+            temp.extend( flatten( i ) )
+        else:
+            temp.append( i )
+
+    return temp
+
+print( flatten( [1, 2, 3, [4, 5] ] ) )
+"""
+
+"""
+name = [ 'A', 'B', 'C' ]
+age = [ 25, 20, 30 ]
+roll = [ 3, 5, 2 ]
+
+name, age, roll
+
+student 1 : name = "A", age = 25, roll = 3
+student 2 : name = "B", age = 20, roll = 5
+student 3 : name = "C", age = 30, roll = 2
+"""
+
+
+# Filter stundetns whose age is more than 20. A and C
+# Syntax : class <class_name>:
+"""     
+            Statement1
+            Statement2
+            .
+            .
+            Statementn
+"""     
+"""
+class Abc:
+      x = 1
+      y = 2
+
+      def arithmetic(self, x, y): # obj_name = obj, x = , y =
+            print( f"arithmetic() : id(self) = { id( self ) }" )
+            print( f"arithmetic() : x = {x}, y = {y}, self.x = { self.x } and self.y = { self.y }" )
+            print( f"arithmetic() : Sum = { x+y+self.x+self.y }" )
+
+            
+            
+
+# Syntax of creating objects : variable/ Obj_name = class_name()
+
+ob1 = Abc()
+ob2 = Abc()
+
+print( f"Outside : id(Abc) = { id(Abc) }" )
+print( f"Outside : id(ob1) = { id(ob1) }" )
+print( f"Outside : id(ob2) = { id(ob2) }\n" )
+
+ob1.x = 10
+ob1.arithmetic(2, 5) # or A.arithmetic(ob1, 2, 5)
+"""
+
+"""
+class Student:
+      a = 1
+
+s1 = Student()
+s2 = Student()
+
+print( f"Before, dir(s1 ) :- \n{ dir(s1 ) }\n\n" )
+
+# Add data in a Object_name.variable = value
+s1.b = 2          
+
+print( f"After, dir(s1 ) :- \n{ dir(s1 ) }" )
+"""
+
+"""
+class Student:
+
+      def takeInput( self, name, age, roll ): # s1, 'A', 20, 12
+            print( f"takeInput() : id(self) = { id(self) }" )
+            self.name = name        # s1.name = 'A'
+            self.age = age         # s1.age = 20
+            self.roll = age        # s1.roll = 12
+
+      def display(self):
+            print( f"display() : id(self) = { id(self) }" )
+            print( f"Name = {self.name}" )
+            print( f"Age = {self.age}" )
+            print( f"Roll = {self.roll}\n" )
+
+s1 = Student()
+s2 = Student()
+
+print( f"Outside : id(Student) = { id(Student) }" )
+print( f"Outside : id(s1) = { id(s1) }" )
+print( f"Outside : id(s2) = { id(s2) }\n" )
+
+# s1.takeInput( 'A', 20, 12 )
+s1.display()
+"""
+
+# Constructor : Constructor is also a normal function . The only extra feture is it will be
+#                 called automatically when any object is created.
+
+class Student:
+
+      def __init__( self, name, age, roll ): # s1, 'A', 20, 12
+            print( f"__init__() : Constructor : id(self) = { id(self) }\n" )
+            self.name = name        # s1.name = 'A'
+            self.age = age         # s1.age = 20
+            self.roll = age        # s1.roll = 12
+
+      def display(self):
+            print( f"display() : id(self) = { id(self) }" )
+            print( f"Name = {self.name}" )
+            print( f"Age = {self.age}" )
+            print( f"Roll = {self.roll}\n" )
+
+      def __del__( self ):
+            print( f"__del__() : Destructor : id(self) = { id(self) }\n" )
+            # self.display() # s1.display()
+
+s1 = Student( 'A', 20, 12 )
+s2 = Student( 'B', 30, 42 )
+
+print( f"Outside : id(Student) = { id(Student) }" )
+print( f"Outside : id(s1) = { id(s1) }" )
+print( f"Outside : id(s2) = { id(s2) }\n" )
+
+# s1.takeInput( 'A', 20, 12 )
+s1.display()
+s2.display()
